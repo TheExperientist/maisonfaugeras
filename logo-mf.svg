@@ -1,0 +1,10 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black part (top and left) -->
+  <path d="M 40 20 Q 80 20 100 40 Q 120 60 120 100 Q 120 140 100 160 Q 80 180 40 180 L 40 140 Q 60 140 70 130 Q 80 120 80 100 Q 80 80 70 70 Q 60 60 40 60 Z" fill="#000000"/>
+
+  <!-- White part (right and bottom) - inverted -->
+  <path d="M 100 40 Q 140 20 160 40 Q 180 60 180 100 Q 180 140 160 160 Q 140 180 100 180 L 100 140 Q 120 140 130 130 Q 140 120 140 100 Q 140 80 130 70 Q 120 60 100 60 Z" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+
+  <!-- Center dot -->
+  <circle cx="80" cy="110" r="8" fill="#000000"/>
+</svg>
