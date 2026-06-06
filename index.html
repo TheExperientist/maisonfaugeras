@@ -1235,19 +1235,20 @@
 
             <div class="contact-form fade-up">
                 <h3>Votre projet commence ici</h3>
+                <p style="font-size: 0.85rem; color: #888; margin-bottom: 1.5rem;">Les champs marqués avec <span style="color: #e74c3c;">*</span> sont obligatoires</p>
                 <form id="contactForm">
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Prénom</label>
+                            <label>Prénom <span style="color: #e74c3c;">*</span></label>
                             <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
                         </div>
                         <div class="form-group">
-                            <label>Nom</label>
+                            <label>Nom <span style="color: #e74c3c;">*</span></label>
                             <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
+                        <label>Email <span style="color: #e74c3c;">*</span></label>
                         <input type="email" id="email" name="email" placeholder="votre@email.com" required>
                     </div>
                     <div class="form-group">
@@ -1265,7 +1266,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Type de projet</label>
+                        <label>Type de projet <span style="color: #e74c3c;">*</span></label>
                         <select id="typeProjet" name="typeProjet" required>
                             <option disabled selected value="">Sélectionnez un type</option>
                             <option value="Architecture d'intérieur">Architecture d'intérieur</option>
@@ -1276,7 +1277,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Votre message</label>
+                        <label>Votre message <span style="color: #e74c3c;">*</span></label>
                         <textarea id="message" name="message" placeholder="Décrivez-nous votre projet..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-dark">Envoyer ma demande</button>
