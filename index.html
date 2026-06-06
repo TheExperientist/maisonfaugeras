@@ -1235,48 +1235,49 @@
 
             <div class="contact-form fade-up">
                 <h3>Votre projet commence ici</h3>
-                <form>
+                <form id="contactForm">
                     <div class="form-row">
                         <div class="form-group">
                             <label>Prénom</label>
-                            <input type="text" placeholder="Votre prénom">
+                            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
                         </div>
                         <div class="form-group">
                             <label>Nom</label>
-                            <input type="text" placeholder="Votre nom">
+                            <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" placeholder="votre@email.com">
+                        <input type="email" id="email" name="email" placeholder="votre@email.com" required>
                     </div>
                     <div class="form-group">
                         <label>Téléphone</label>
-                        <input type="tel" placeholder="+33 6 00 00 00 00">
+                        <input type="tel" id="telephone" name="telephone" placeholder="+33 6 00 00 00 00">
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label>Ville</label>
-                            <input type="text" placeholder="Votre ville">
+                            <input type="text" id="ville" name="ville" placeholder="Votre ville">
                         </div>
                         <div class="form-group">
                             <label>Code postal</label>
-                            <input type="text" placeholder="75000">
+                            <input type="text" id="codePostal" name="codePostal" placeholder="75000">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Type de projet</label>
-                        <select>
-                            <option>Architecture d'intérieur</option>
-                            <option>Scénographie audiovisuelle</option>
-                            <option>Audit & conseil</option>
-                            <option>Suivi de chantier</option>
-                            <option>Autre</option>
+                        <select id="typeProjet" name="typeProjet" required>
+                            <option value="">Sélectionnez un type</option>
+                            <option value="Architecture d'intérieur">Architecture d'intérieur</option>
+                            <option value="Scénographie audiovisuelle">Scénographie audiovisuelle</option>
+                            <option value="Audit & conseil">Audit & conseil</option>
+                            <option value="Suivi de chantier">Suivi de chantier</option>
+                            <option value="Autre">Autre</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Votre message</label>
-                        <textarea placeholder="Décrivez-nous votre projet..."></textarea>
+                        <textarea id="message" name="message" placeholder="Décrivez-nous votre projet..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-dark">Envoyer ma demande</button>
                 </form>
@@ -1328,6 +1329,40 @@
     </footer>
 
     <script>
+        // Formulaire de contact
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                prenom: document.getElementById('prenom').value,
+                nom: document.getElementById('nom').value,
+                email: document.getElementById('email').value,
+                telephone: document.getElementById('telephone').value,
+                ville: document.getElementById('ville').value,
+                codePostal: document.getElementById('codePostal').value,
+                typeProjet: document.getElementById('typeProjet').value,
+                message: document.getElementById('message').value
+            };
+
+            fetch('https://script.google.com/macros/s/AKfycbw1f9Wr87JFBAQBD6f1RXMxgsfaK2bjCGDy_INe3AD1qEgvZR8Lpk441-y83CHmXLMNnA/exec', {
+                method: 'POST',
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('✅ Votre demande a été envoyée avec succès !');
+                    document.getElementById('contactForm').reset();
+                } else {
+                    alert('❌ Erreur lors de l\'envoi. Veuillez réessayer.');
+                }
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                alert('❌ Erreur de connexion. Veuillez vérifier votre connexion Internet.');
+            });
+        });
+
         // Navbar scroll
         window.addEventListener('scroll', () => {
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
